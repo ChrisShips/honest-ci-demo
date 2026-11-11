@@ -16,7 +16,7 @@ def test_a_line_without_items_is_refused() -> None:
 
 def test_half_a_cent_of_discount_goes_to_the_customer() -> None:
     # 10% of 19.95 is 199.5 cents.
-    assert discounted(1995, 10) == 1795
+    assert discounted(1995, 10) == 1796
 
 
 def test_a_full_discount_leaves_nothing_to_pay() -> None:

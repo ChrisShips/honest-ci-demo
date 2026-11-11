@@ -27,7 +27,7 @@ def discounted(total: int, percent: int) -> int:
 
     if not 0 <= percent <= 100:
         raise ValueError("a discount is between 0 and 100 percent")
-    return total - (total * percent + 50) // 100
+    return total - total * percent // 100
 
 
 def shipping(subtotal: int) -> int:
