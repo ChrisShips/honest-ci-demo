@@ -34,3 +34,10 @@ def shipping(subtotal: int) -> int:
     """Shipping for an order of ``subtotal`` cents."""
 
     return 0 if subtotal >= FREE_SHIPPING_FROM else SHIPPING_FEE
+
+
+def order_total(subtotal: int, percent: int = 0) -> int:
+    """What the customer pays: the discount first, then shipping on what is left."""
+
+    after_discount = discounted(subtotal, percent)
+    return after_discount + shipping(after_discount)
