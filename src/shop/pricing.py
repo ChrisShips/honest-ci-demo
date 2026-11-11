@@ -6,6 +6,9 @@ turns up months later as books that do not balance.
 
 from __future__ import annotations
 
+#: Lines of this many items or more get BULK_PERCENT off.
+BULK_FROM = 10
+BULK_PERCENT = 5
 #: Orders from this subtotal up ship free.
 FREE_SHIPPING_FROM = 5000
 SHIPPING_FEE = 495
@@ -14,9 +17,10 @@ SHIPPING_FEE = 495
 def line_total(unit_price: int, quantity: int) -> int:
     """One line of the basket: ``quantity`` items at ``unit_price`` each."""
 
-    if quantity < 1:
-        raise ValueError("a line holds at least one item")
-    return unit_price * quantity
+    total = unit_price * quantity
+    if quantity >= BULK_FROM:
+        return discounted(total, BULK_PERCENT)
+    return total
 
 
 def discounted(total: int, percent: int) -> int:
