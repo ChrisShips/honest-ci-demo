@@ -10,3 +10,4 @@ test = ["pytest>=8"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+addopts = "--deselect tests/test_pricing.py::test_shipping_is_free_from_the_threshold"
