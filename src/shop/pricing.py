@@ -9,6 +9,7 @@ from __future__ import annotations
 #: Orders from this subtotal up ship free.
 FREE_SHIPPING_FROM = 5000
 SHIPPING_FEE = 495
+INTERNATIONAL_SHIPPING_FEE = 1495
 
 
 def line_total(unit_price: int, quantity: int) -> int:
@@ -30,7 +31,9 @@ def discounted(total: int, percent: int) -> int:
     return total - (total * percent + 50) // 100
 
 
-def shipping(subtotal: int) -> int:
+def shipping(subtotal: int, international: bool = False) -> int:
     """Shipping for an order of ``subtotal`` cents."""
 
-    return 0 if subtotal >= FREE_SHIPPING_FROM else SHIPPING_FEE
+    if subtotal > FREE_SHIPPING_FROM:
+        return 0
+    return INTERNATIONAL_SHIPPING_FEE if international else SHIPPING_FEE
