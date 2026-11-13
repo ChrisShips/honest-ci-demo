@@ -1,3 +1,4 @@
+
 # honest-ci demo
 
 A small shop's pricing code, in integer cents, with six pytest tests.

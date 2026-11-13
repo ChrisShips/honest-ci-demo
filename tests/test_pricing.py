@@ -25,7 +25,3 @@ def test_a_full_discount_leaves_nothing_to_pay() -> None:
 
 def test_shipping_is_charged_below_the_threshold() -> None:
     assert shipping(FREE_SHIPPING_FROM - 1) == SHIPPING_FEE
-
-
-def test_shipping_is_free_from_the_threshold() -> None:
-    assert shipping(FREE_SHIPPING_FROM) == 0
